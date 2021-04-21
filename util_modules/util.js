@@ -11,6 +11,8 @@ function consoleFn(allResSel, availSel, nameSel, linkSel, priceSel) {
                 try{
                     price = allResults[i].querySelector(priceSel).innerText.split("₹")[1].trim();
                 } catch(err){
+                    // sometimes a medicine is available but the price is not available(or updated as they say)
+                    // so it may lead to error from the above statement which is handled here
                     price = "Price Not Available";
                 }
                 let link;

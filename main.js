@@ -6,7 +6,7 @@ const netmedsModule = require('./website_modules/netmeds');
 const pharmeasyModule = require('./website_modules/pharmeasy');
 const practoModule = require('./website_modules/practo');
 
-let medicine = process.argv.slice(2)[0];
+let medicine = "" + process.argv.slice(2)[0]; 
 let cTab;
 
 let list = [];
@@ -14,7 +14,8 @@ let list = [];
     try {
         console.log(`
                     PLEASE WAIT YOUR RESULT WILL BE DISPLAYED SOON.
-                    ***********************************************`)
+                    ***********************************************`);
+        
         let browser = await puppeteer.launch({
             headless: false,
             defaultViewport: null,
@@ -46,8 +47,12 @@ let list = [];
                     *************************************************************
         `)
 
-        // await browser.close();
+        await browser.close();
     } catch (err) {
-        console.log(err);
+        console.log(`
+                    ***************************************************************************
+                    WE ARE FACING DIFFICULTIES TO EXTRACT DATA RIGHT NOW PLEASE TRY AGAIN LATER  
+                    ***************************************************************************
+        `)
     }
 })();

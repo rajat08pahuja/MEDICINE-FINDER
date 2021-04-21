@@ -11,6 +11,9 @@ async function practoFun(cTab, medicine) {
         try {
             await cTab.waitForSelector("div.search-bar__results a", { visible: true });
         } catch (err) {
+            // the results load on the same page therefore in case there is no similar medicine
+            // available there could be error from the above statement
+            // so error is handled here only to avoid breaking the code
             medDetails = {
                 website: "Practo",
                 name: "Medicine Not Available!!!",
